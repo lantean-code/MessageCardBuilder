@@ -1,0 +1,538 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MessageCardBuilder</name>
+    </assembly>
+    <members>
+        <member name="T:MessageCard.Builder.Builders.MessageBuilder">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Builders.MessageBuilder.Build">
+            <summary>
+            Builds a new Slack Message from the builder.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:MessageCard.Builder.IActionsBuilder`1">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:MessageCard.Builder.IActionsBuilder`1.AddAction(`0)">
+            <summary>
+            Adds a block element to the array.
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.BaseAction.Type">
+            <summary>
+            The name property defines the text that will be displayed on screen for the action.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.BaseAction.Name">
+            <summary>
+            The name property defines the text that will be displayed on screen for the action.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.DateInput">
+            <summary>
+            Use this input type when you need users to provide a date and or a time, such as for a task's due date.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#example-dateinput">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#example-dateinput</a>
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.DateInput.#ctor(System.String,System.String,System.Boolean,System.Nullable{System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.DateInput"/> class.
+            </summary>
+            <param name="id">Uniquely identifies the input so it is possible to reference it in the URL or body of an <see cref="T:MessageCard.Builder.Objects.HttpPostAction" /> action.</param>
+            <param name="title">Defines a title for the input.</param>
+            <param name="includeTime">Indicates whether the date input should allow for the selection of a time in addition to the date.</param>
+            <param name="required">Indicates whether users are required to type a value before they are able to take an action that would take the value of the input as a parameter.</param>
+            <param name="initialValue">Defines the initial value of the input.  For multi-choice inputs, value must be equal to the value property of one of the input's choices.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.DateInput.IncludeTime">
+            <summary>
+            Indicates whether the date input should allow for the selection of a time in addition to the date.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.Fact">
+            <summary>
+            Facts are a very important component of a section. They often contain the information that really matters to the user.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Fact.Name">
+            <summary>
+            The name of the fact. Do keep fact names short. Avoid using Markdown formatting.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Fact.Value">
+            <summary>
+            The value of the fact. 
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.Header">
+            <summary>
+            The Header object is a name/value pair that represents an HTTP header.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#header">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#header</a>
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.Header.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.Header"/> class.
+            </summary>
+            <param name="name">The header name.</param>
+            <param name="value">The header value.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Header.Name">
+            <summary>
+            The header name.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Header.Value">
+            <summary>
+            The header value.
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.HttpPostAction.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{MessageCard.Builder.Objects.Header},MessageCard.Builder.Objects.BodyContentType)">
+            <summary>
+            Makes a call to an external Web service.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#httppost-action">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#httppost-action</a>
+            </summary>
+            <param name="name"></param>
+            <param name="target"></param>
+            <param name="body"></param>
+            <param name="headers"></param>
+            <param name="bodyContentType"></param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.HttpPostAction.Target">
+            <summary>
+            Defines the URL endpoint of the service that implements the action.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.HttpPostAction.Headers">
+            <summary>
+            A collection of <see cref="T:MessageCard.Builder.Objects.Header"/> objects representing a set of
+            HTTP headers that will be emitted when sending the POST request
+            to the target URL.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.HttpPostAction.Body">
+            <summary>
+            The body of the POST request.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.HttpPostAction.BodyContentType">
+            <summary>
+            Optional and specifies the MIME type of the body in the POST request.
+            Some services require that a content type be specified.
+            Valid values are application/json and application/x-www-form-urlencoded.
+            If not specified, application/json is assumed.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.Input">
+            <summary>
+            The base type for all inputs.
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.Input.#ctor(System.String,System.String,System.String,System.Nullable{System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.Input"/> class.
+            </summary>
+            <param name="type">The type of the input.</param>
+            <param name="id">Uniquely identifies the input so it is possible to reference it in the URL or body of an <see cref="T:MessageCard.Builder.Objects.HttpPostAction" /> action.</param>
+            <param name="title">Defines a title for the input.</param>
+            <param name="required">Indicates whether users are required to type a value before they are able to take an action that would take the value of the input as a parameter.</param>
+            <param name="initialValue">Defines the initial value of the input.  For multi-choice inputs, value must be equal to the value property of one of the input's choices.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Input.Type">
+            <summary>
+            The type of the input.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Input.Id">
+            <summary>
+            Uniquely identifies the input so it is possible to reference it in the URL or body of an <see cref="T:MessageCard.Builder.Objects.HttpPostAction" /> action.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Input.Required">
+            <summary>
+            Indicates whether users are required to type a value before they are able to take an action that would take the value of the input as a parameter.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Input.Title">
+            <summary>
+            Defines a title for the input.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Input.InitialValue">
+            <summary>
+            Defines the initial value of the input.  For multi-choice inputs, value must be equal to the value property of one of the input's choices.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.InvokeAddInCommandAction">
+            <summary>
+            Opens an Outlook add-in task pane. If the add-in is not installed, the user is prompted to install the add-in with a single click.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#invokeaddincommand-action">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#invokeaddincommand-action</a>
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.InvokeAddInCommandAction.#ctor(System.String,System.Guid,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.InvokeAddInCommandAction"/> class.
+            </summary>
+            <param name="name">The name property defines the text that will be displayed on screen for the action.</param>
+            <param name="addInId">Specifies the add-in ID of the required add-in. The add-in ID is found in the Id element in the add-in's manifest.</param>
+            <param name="desktopCommandId">Specifies the ID of the add-in command button that opens the required task pane.</param>
+            <param name="initializationContext">Optional. Developers may specify any valid JSON object in this field. The value is serialized into a string and made available to the add-in when the action is executed. This allows the action to pass initialization data to the add-in.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.InvokeAddInCommandAction.AddInId">
+            <summary>
+            Specifies the add-in ID of the required add-in.
+            The add-in ID is found in the Id element in the add-in's manifest.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.InvokeAddInCommandAction.DesktopCommandId">
+            <summary>
+            Specifies the ID of the add-in command button that opens the
+            required taskpane.The command button ID is found in the id attribute
+            of the Control element that defines the button in the add-in's
+            manifest. The specified Control element MUST be defined inside a
+            MessageReadCommandSurface extension point, be of type Button, and
+            the control's Action must be of type ShowTaskPane.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.InvokeAddInCommandAction.InitializationContext">
+            <summary>
+            Optional. Developers may specify any valid JSON object in this
+            field. The value is serialized into a string and made available to
+            the add-in when the action is executed. This allows the action to
+            pass initialization data to the add-in.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.LegacyMessageCard">
+            <summary>
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#card-fields">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#card-fields</a>
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Type">
+            <summary>
+            Required. Must be set to MessageCard.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Context">
+            <summary>
+            Required. Must be set to https://schema.org/extensions.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.CorrelationId">
+            <summary>
+            The correlationId property simplifies the process of locating logs for troubleshooting issues. We recommend that when sending an actionable card, your service should set and log a unique UUID in this property.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.ExpectedActors">
+            <summary>
+            Optional. This contains a list of expected email addresses of the recipient for the action endpoint.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Originator">
+            <summary>
+            Required when sent via email, not applicable when sent via connector. For actionable email, MUST be set to the provider ID generated by the <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/email-dev-dashboard">Actionable Email Developer Dashboard</a>.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Summary">
+            <summary>
+            Required if the card does not contain a text property, otherwise optional. The summary property is typically displayed in the list view in Outlook, as a way to quickly determine what the card is all about.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.ThemeColor">
+            <summary>
+            Specifies a custom brand color for the card. The color will be displayed in a non-obtrusive manner.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.HideOriginalBody">
+            <summary>
+            When set to true, causes the HTML body of the message to be hidden. This is very useful in scenarios where the card is a better or more useful representation of the content than the HTML body itself, which is especially true when the card contains actions (see below.)
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Title">
+            <summary>
+            The title property is meant to be rendered in a prominent way, at the very top of the card. Use it to introduce the content of the card in such a way users will immediately know what to expect.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Text">
+            <summary>
+            	Required if the card does not contain a summary property, otherwise optional. The text property is meant to be displayed in a normal font below the card's title. Use it to display content, such as the description of the entity being referenced, or an abstract of a news article.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Sections">
+            <summary>
+            A collection of sections to include in the card.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.LegacyMessageCard.Actions">
+            <summary>
+            A collection of actions that can be invoked on this card.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.MultiChoiceInput">
+            <summary>
+            Use this input type when you need users to select from a list of pre-defined choices, such as a bug status, yes/no/maybe, etc.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#multichoiceinput">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#multichoiceinput</a>
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.MultiChoiceInput.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{MessageCard.Builder.Objects.Choice},System.Boolean,MessageCard.Builder.Objects.Style,System.Nullable{System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.MultiChoiceInput"/> class.
+            </summary>
+            <param name="id">Uniquely identifies the input so it is possible to reference it in the URL or body of an <see cref="T:MessageCard.Builder.Objects.HttpPostAction" /> action.</param>
+            <param name="title">Defines a title for the input.</param>
+            <param name="choices">Defines the values that can be selected for the multi choice input.</param>
+            <param name="multiSelect">If set to true, indicates that the user can select more than one choice. The specified choices will be displayed as a list of checkboxes.</param>
+            <param name="style">When isMultiSelect is false, setting the style property to expanded will instruct the host application to try and display all choices on the screen, typically using a set of radio buttons.</param>
+            <param name="required">Indicates whether users are required to type a value before they are able to take an action that would take the value of the input as a parameter.</param>
+            <param name="initialValue">Defines the initial value of the input.  For multi-choice inputs, value must be equal to the value property of one of the input's choices.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.MultiChoiceInput.Choices">
+            <summary>
+            Defines the values that can be selected for the multi choice input.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.MultiChoiceInput.MultiSelect">
+             <summary>
+             If set to true, indicates that the user can select more than one choice. The specified choices will be displayed as a list of checkboxes.
+            
+             Default value is false.
+             </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.MultiChoiceInput.Style">
+            <summary>
+            When isMultiSelect is false, setting the style property to expanded will instruct the host application to try and display all choices on the screen, typically using a set of radio buttons.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.OpenUriAction">
+            <summary>
+            Opens a URI in a separate browser or app.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#openuri-action">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#openuri-action</a>
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.OpenUriAction.#ctor(System.String,System.Collections.Generic.IEnumerable{MessageCard.Builder.Objects.Target})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.OpenUriAction"/> class.
+            </summary>
+            <param name="name">The name property defines the text that will be displayed on screen for the action.</param>
+            <param name="targets">The targets property is a collection of name/value pairs that defines one URI per target operating system.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.OpenUriAction.Targets">
+            <summary>
+            The targets property is a collection of name/value pairs that defines one URI per target operating system.
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.Section.#ctor(System.String,System.Nullable{System.Boolean},System.String,System.String,System.String,System.String,MessageCard.Builder.Objects.Image,System.String,System.Collections.Generic.IEnumerable{MessageCard.Builder.Objects.Fact},System.Collections.Generic.IEnumerable{MessageCard.Builder.Objects.Image},System.Collections.Generic.IEnumerable{MessageCard.Builder.IAction})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.Section"/> class.
+            </summary>
+            <param name="title">The title property of a section is displayed in a font that stands out while not as prominent as the card's title. It is meant to introduce the section and summarize its content, similarly to how the card's title property is meant to summarize the whole card.</param>
+            <param name="isStartGroup">When set to true, the startGroup property marks the start of a logical group of information. Typically, sections with startGroup set to true will be visually separated from previous card elements. For example, Outlook uses a subtle horizontal separation line.</param>
+            <param name="activityTitle"></param>
+            <param name="activitySubtitle"></param>
+            <param name="activityText"></param>
+            <param name="activityImage"></param>
+            <param name="heroImage"></param>
+            <param name="text"></param>
+            <param name="facts"></param>
+            <param name="images"></param>
+            <param name="actions"></param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.Title">
+            <summary>
+            The title property of a section is displayed in a font that stands out while not as prominent as the card's title. It is meant to introduce the section and summarize its content, similarly to how the card's title property is meant to summarize the whole card.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.IsStartGroup">
+            <summary>
+            When set to true, the startGroup property marks the start of a logical group of information. Typically, sections with startGroup set to true will be visually separated from previous card elements. For example, Outlook uses a subtle horizontal separation line.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.ActivityTitle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.ActivitySubtitle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.ActivityText">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.ActivityImage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.HeroImage">
+            <summary>
+            Use heroImage to make an image the centerpiece of your card. For example, a tweet that contains an image will want to put that image front and center:
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.Text">
+            <summary>
+            The section's text property is very similar to the text property of the card. It can be used for the same purpose.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.Facts">
+            <summary>
+            Facts are a very important component of a section. They often contain the information that really matters to the user.
+            Facts are displayed in such a way that they can be read quickly and efficiently.For example, in Outlook on the Web, facts are presented in a two-column layout, with fact names rendered in a slightly more prominent font:
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.Images">
+            <summary>
+            The images property allows for the inclusion of a photo gallery inside a section. That photo gallery will always be displayed in a way that is easy to consume regardless of the form factor of the device it is being viewed on. For instance, in Outlook on the Web, images might be displayed as a horizontal strip of thumbnails with controls allowing to scroll through the collection if it doesn't all fit on the screen. On mobile, images might be displayed as a single thumbnail, with the user able to swipe through the collection with their finger.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Section.Actions">
+            <summary>
+            A collection of actions that can be invoked on this section.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.Target">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.Target.#ctor(MessageCard.Builder.Objects.TargetOs,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.Target"/> class.
+            </summary>
+            <param name="operatingSystem">The operating system for which the target is designed.</param>
+            <param name="uri">The uri to open.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Target.OperatingSystem">
+            <summary>
+            The operating system for which the target is designed.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.Target.Uri">
+            <summary>
+            The uri to open.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.Objects.TextInput">
+            <summary>
+            Use this input type when you need users to provide free text, such as the response to a survey question.
+            
+            <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#textinput">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#textinput</a>
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.Objects.TextInput.#ctor(System.String,System.String,System.Boolean,System.Int32,System.Nullable{System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MessageCard.Builder.Objects.TextInput"/> class.
+            </summary>
+            <param name="id">Uniquely identifies the input so it is possible to reference it in the URL or body of an <see cref="T:MessageCard.Builder.Objects.HttpPostAction" /> action.</param>
+            <param name="title">Defines a title for the input.</param>
+            <param name="multiline">Indicates whether the text input should accept multiple lines of text.</param>
+            <param name="maxLength">Indicates the maximum number of characters that can be entered.</param>
+            <param name="required">Indicates whether users are required to type a value before they are able to take an action that would take the value of the input as a parameter.</param>
+            <param name="initialValue">Defines the initial value of the input.  For multi-choice inputs, value must be equal to the value property of one of the input's choices.</param>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.TextInput.Multiline">
+            <summary>
+            Indicates whether the text input should accept multiple lines of text.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.Objects.TextInput.MaxLength">
+            <summary>
+            Indicates the maximum number of characters that can be entered.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.MessageBuilderExtensions">
+            <summary>
+            Fluent builder for <see cref="T:MessageCard.Builder.Objects.LegacyMessageCard"/>s.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.MessageCardBuilder">
+            <summary>
+            Fluent builder for <see cref="T:MessageCard.Builder.Objects.LegacyMessageCard"/>s.
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.MessageCardBuilder.CreateMessage(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Creates a new instance of the fluent message builder.
+            </summary>
+            <param name="text">The usage of this field changes depending on whether you're using blocks or not. If you are, this is used as a fallback string to display in notifications. If you aren't, this is the main body text of the message. It can be formatted as plain text, or with mrkdwn. This field is not enforced as required when using blocks, however it is highly recommended that you include it as the aforementioned fallback.</param>
+            <param name="isMarkdown">Determines whether the text field is rendered according to mrkdwn formatting or not. Defaults to true.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MessageCard.Builder.MessageCardBuilder.CreateApiMessage(System.String,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Creates a new instance of the fluent message builder for API style messages.
+            </summary>
+            <param name="channel"></param>
+            <param name="text">The usage of this field changes depending on whether you're using blocks or not. If you are, this is used as a fallback string to display in notifications. If you aren't, this is the main body text of the message. It can be formatted as plain text, or with mrkdwn. This field is not enforced as required when using blocks, however it is highly recommended that you include it as the aforementioned fallback.</param>
+            <param name="isMarkdown">Determines whether the text field is rendered according to mrkdwn formatting or not. Defaults to true.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MessageCard.Builder.MessageCardExtensions">
+            <summary>
+            SlackMessage extensions.
+            </summary>
+        </member>
+        <member name="M:MessageCard.Builder.MessageCardExtensions.ToJson(MessageCard.Builder.Objects.LegacyMessageCard)">
+            <summary>
+            Converts the message into a JSON formatted for the Slack API.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MessageCard.Builder.MessageCardExtensions.ToJson(MessageCard.Builder.Objects.LegacyMessageCard,System.IO.Stream)">
+            <summary>
+            Converts the message into a JSON formatted for the Slack API.
+            </summary>
+            <param name="message">The message to convert.</param>
+            <param name="utf8Json">The UTF-8 stream to write to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MessageCard.Builder.MessageCardExtensions.ToJsonAsync(MessageCard.Builder.Objects.LegacyMessageCard,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Converts the message into a JSON formatted for the Slack API.
+            </summary>
+            <param name="message">The message to convert.</param>
+            <param name="utf8Json">The UTF-8 stream to write to.</param>
+            <param name="cancellationToken">A token that may be used to cancel the write operation.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MessageCard.Builder.MessageCardJsonSerializerOptions">
+            <summary>
+            Options for System.Text.Json serialization.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.MessageCardJsonSerializerOptions.Options">
+            <summary>
+            These options ensure the JSON output matches the specification for the Slack API.
+            </summary>
+        </member>
+        <member name="T:MessageCard.Builder.MessageCardJsonSerializerSettings">
+            <summary>
+            Options for Newtonsoft.Json serialization.
+            </summary>
+        </member>
+        <member name="P:MessageCard.Builder.MessageCardJsonSerializerSettings.Settings">
+            <summary>
+            These options ensure the JSON output matches the specification for the Slack API.
+            </summary>
+        </member>
+    </members>
+</doc>

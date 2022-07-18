@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>9.0</LangVersion>
+	<Nullable>enable</Nullable>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<Configurations>Debug;NewtonsoftJson;SystemTextJson</Configurations>
+	<Version>0.3.0-beta</Version>
+	<Authors>ahjephson</Authors>
+	<Company>ahjephson</Company>
+	<RepositoryUrl>https://github.com/ahjephson/MessageCardBuilder.git</RepositoryUrl>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	<PackageProjectUrl>https://github.com/ahjephson/MessageCardBuilder</PackageProjectUrl>
+	<Description>Fluent message builder for Legacy MessageCards.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <WarningsNotAsErrors>CS1591;CS0618</WarningsNotAsErrors>
+	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+	<DocumentationFile>./MessageCardBuilder.xml</DocumentationFile>
+	<RootNamespace>$(MSBuildProjectName.Replace("MessageCard", "MessageCard."))</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NewtonsoftJson|AnyCPU'">
+    <WarningsNotAsErrors>CS1591;CS0618</WarningsNotAsErrors>
+	<AssemblyName>$(MSBuildProjectName).NewtonsoftJson</AssemblyName>
+	<DocumentationFile>./MessageCardBuilder.NewtonsoftJson.xml</DocumentationFile>
+	<PackageId>MessageCardBuilder.NewtonsoftJson</PackageId>
+	<PackageTags>Message Card;MessageCard;MessageCard Builder;Legacy MessageCard;Newtonsoft.Json</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SystemTextJson|AnyCPU'">
+    <WarningsNotAsErrors>CS1591;CS0618</WarningsNotAsErrors>
+	<AssemblyName>$(MSBuildProjectName).SystemTextJson</AssemblyName>
+	<DocumentationFile>./MessageCardBuilder.SystemTextJson.xml</DocumentationFile>
+	<PackageId>MessageCardBuilder.SystemTextJson</PackageId>
+	<PackageTags>Message Card;MessageCard;MessageCard Builder;Legacy MessageCard;System.Text.Json</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<None Include="..\LICENSE.md" Link="LICENSE.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.1" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.1" Condition="'$(Configuration)|$(Platform)'=='NewtonsoftJson|AnyCPU'" />
+	<PackageReference Include="System.Text.Json" Version="6.0.5" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+    <PackageReference Include="System.Text.Json" Version="6.0.5" Condition="'$(Configuration)|$(Platform)'=='SystemTextJson|AnyCPU'" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+	  <_Parameter1>MessageCardBuilder.Test</_Parameter1>
+	</AssemblyAttribute>
+  </ItemGroup>
+</Project>
