@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MessageCard.Builder.Objects
+﻿namespace MessageCard.Builder.Objects
 {
     /// <summary>
     /// The base type for all inputs.
@@ -27,31 +25,51 @@ namespace MessageCard.Builder.Objects
         /// <summary>
         /// The type of the input.
         /// </summary>
-        [JsonPropertyName("@type")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("@type")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("@type")]
+#endif
         public string Type { get; }
 
         /// <summary>
         /// Uniquely identifies the input so it is possible to reference it in the URL or body of an <see cref="HttpPostAction" /> action.
         /// </summary>
-        [JsonPropertyName("id")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("id")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("id")]
+#endif
         public string Id { get; }
 
         /// <summary>
         /// Indicates whether users are required to type a value before they are able to take an action that would take the value of the input as a parameter.
         /// </summary>
-        [JsonPropertyName("isRequired")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("isRequired")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("isRequired")]
+#endif
         public bool? Required { get; }
 
         /// <summary>
         /// Defines a title for the input.
         /// </summary>
-        [JsonPropertyName("title")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("title")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("title")]
+#endif
         public string Title { get; }
 
         /// <summary>
         /// Defines the initial value of the input.  For multi-choice inputs, value must be equal to the value property of one of the input's choices.
         /// </summary>
-        [JsonPropertyName("value")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("value")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("value")]
+#endif
         public string? InitialValue { get; }
     }
 }

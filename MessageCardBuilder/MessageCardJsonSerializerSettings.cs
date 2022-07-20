@@ -11,7 +11,7 @@ namespace MessageCard.Builder
     public static class MessageCardJsonSerializerSettings
     {
         /// <summary>
-        /// These options ensure the JSON output matches the specification for the Slack API.
+        /// These options ensure the JSON output matches the specification for Legacy MessageCards.
         /// </summary>
         public static JsonSerializerSettings Settings { get; } = new JsonSerializerSettings();
 

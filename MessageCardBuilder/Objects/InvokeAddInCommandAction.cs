@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Text.Json.Serialization;
 
 namespace MessageCard.Builder.Objects
 {
     /// <summary>
     /// Opens an Outlook add-in task pane. If the add-in is not installed, the user is prompted to install the add-in with a single click.
-    /// 
+    ///
     /// <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#invokeaddincommand-action">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#invokeaddincommand-action</a>
     /// </summary>
     public class InvokeAddInCommandAction : BaseAction
@@ -32,8 +31,12 @@ namespace MessageCard.Builder.Objects
         /// Specifies the add-in ID of the required add-in.
         /// The add-in ID is found in the Id element in the add-in's manifest.
         /// </summary>
-        [JsonPropertyName("addInId")]
-        public Guid AddInId { get; }        
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("addInId")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("addInId")]
+#endif
+        public Guid AddInId { get; }
 
         /// <summary>
         /// Specifies the ID of the add-in command button that opens the
@@ -43,7 +46,11 @@ namespace MessageCard.Builder.Objects
         /// MessageReadCommandSurface extension point, be of type Button, and
         /// the control's Action must be of type ShowTaskPane.
         /// </summary>
-        [JsonPropertyName("desktopCommandId")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("desktopCommandId")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("desktopCommandId")]
+#endif
         public string DesktopCommandId { get; }
 
         /// <summary>
@@ -52,7 +59,11 @@ namespace MessageCard.Builder.Objects
         /// the add-in when the action is executed. This allows the action to
         /// pass initialization data to the add-in.
         /// </summary>
-        [JsonPropertyName("initializationContext")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("initializationContext")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("initializationContext")]
+#endif
         public object? InitializationContext { get; }
     }
 }

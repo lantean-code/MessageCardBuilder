@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace MessageCard.Builder.Objects
 {
     /// <summary>
     /// Opens a URI in a separate browser or app.
-    /// 
+    ///
     /// <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#openuri-action">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#openuri-action</a>
     /// </summary>
     public class OpenUriAction : BaseAction, IEmbeddableAction
@@ -25,7 +24,11 @@ namespace MessageCard.Builder.Objects
         /// <summary>
         /// The targets property is a collection of name/value pairs that defines one URI per target operating system.
         /// </summary>
-        [JsonPropertyName("targets")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("targets")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("targets")]
+#endif
         public IEnumerable<Target> Targets { get; }
     }
 }
