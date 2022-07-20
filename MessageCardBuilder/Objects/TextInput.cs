@@ -1,10 +1,8 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MessageCard.Builder.Objects
+﻿namespace MessageCard.Builder.Objects
 {
     /// <summary>
     /// Use this input type when you need users to provide free text, such as the response to a survey question.
-    /// 
+    ///
     /// <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#textinput">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#textinput</a>
     /// </summary>
     public class TextInput : Input
@@ -33,13 +31,21 @@ namespace MessageCard.Builder.Objects
         /// <summary>
         /// Indicates whether the text input should accept multiple lines of text.
         /// </summary>
-        [JsonPropertyName("isMultiline")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("isMultiline")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("isMultiline")]
+#endif
         public bool Multiline { get; }
 
         /// <summary>
         /// Indicates the maximum number of characters that can be entered.
         /// </summary>
-        [JsonPropertyName("maxLength")]
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("maxLength")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("maxLength")]
+#endif
         public int MaxLength { get; }
     }
 }

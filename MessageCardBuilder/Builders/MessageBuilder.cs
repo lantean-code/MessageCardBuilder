@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MessageCard.Builder.Builders
 {
     /// <summary>
-    ///
+    /// A message builder.
     /// </summary>
     public class MessageBuilder
     {

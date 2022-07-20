@@ -5,13 +5,13 @@ namespace MessageCard.Builder
     /// <summary>
     /// 
     /// </summary>
-    public interface ISectionsBuilder
+    public interface IFactsBuilder
     {
         /// <summary>
-        /// Adds a section to the builder.
+        /// Adds a fact to the builder.
         /// </summary>
-        /// <param name="section"></param>
+        /// <param name="fact">The fact</param>
         /// <returns></returns>
-        ISectionsBuilder AddSection(Section section);
+        IFactsBuilder AddFact(Fact fact);
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace MessageCard.Builder.Builders
 {
+    /// <summary>
+    /// The section builder.
+    /// </summary>
     public class SectionBuilder
     {
         internal string? Title { get; set; }

@@ -11,13 +11,14 @@ namespace MessageCard.Builder
     public static class MessageCardJsonSerializerOptions
     {
         /// <summary>
-        /// These options ensure the JSON output matches the specification for the Slack API.
+        /// These options ensure the JSON output matches the specification for Legacy MessageCards.
         /// </summary>
         public static JsonSerializerOptions Options { get; } = new JsonSerializerOptions();
 
         static MessageCardJsonSerializerOptions()
         {
-            Options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+            Options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            Options.Converters.Add(new EnumMemberJsonConverter());
             Options.Converters.Add(new JsonStringEnumConverter());
             Options.Converters.Add(new RuntimeTypeJsonConverter());
         }

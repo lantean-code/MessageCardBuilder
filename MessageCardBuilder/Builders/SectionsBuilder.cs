@@ -1,10 +1,9 @@
 ﻿using MessageCard.Builder.Objects;
-using System;
 using System.Collections.Generic;
 
 namespace MessageCard.Builder.Builders
 {
-    public class SectionsBuilder : ISectionsBuilder
+    internal class SectionsBuilder : ISectionsBuilder
     {
         private readonly List<Section> _sections = new List<Section>();
 

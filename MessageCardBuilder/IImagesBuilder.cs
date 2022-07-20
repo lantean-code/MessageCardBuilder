@@ -5,13 +5,13 @@ namespace MessageCard.Builder
     /// <summary>
     /// 
     /// </summary>
-    public interface ISectionsBuilder
+    public interface IImagesBuilder
     {
         /// <summary>
-        /// Adds a section to the builder.
+        /// Adds an image to the buidler.
         /// </summary>
-        /// <param name="section"></param>
+        /// <param name="image">The image to add.</param>
         /// <returns></returns>
-        ISectionsBuilder AddSection(Section section);
+        IImagesBuilder AddImage(Image image);
     }
 }

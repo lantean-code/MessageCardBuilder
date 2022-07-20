@@ -1,10 +1,8 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MessageCard.Builder.Objects
+﻿namespace MessageCard.Builder.Objects
 {
     /// <summary>
     /// Use this input type when you need users to provide a date and or a time, such as for a task's due date.
-    /// 
+    ///
     /// <a href="https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#example-dateinput">https://docs.microsoft.com/en-us/outlook/actionable-messages/message-card-reference#example-dateinput</a>
     /// </summary>
     public class DateInput : Input
@@ -30,7 +28,11 @@ namespace MessageCard.Builder.Objects
         /// <summary>
         /// Indicates whether the date input should allow for the selection of a time in addition to the date.
         /// </summary>
-        [JsonPropertyName("includeTime")]
-        public bool IncludeTime { get; set; }
+#if NEWTONSOFTJSON || DEBUG
+        [Newtonsoft.Json.JsonProperty("includeTime")]
+#elif SYSTEMTEXTJSON|| DEBUG
+        [System.Text.Json.Serialization.JsonPropertyName("includeTime")]
+#endif
+        public bool IncludeTime { get; }
     }
 }
